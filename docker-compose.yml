@@ -1,6 +1,8 @@
 services:
   ai_agent_playground:
+    container_name: ai-agent-playground
     build: .
+    image: jpyles0524/ai-agent-playground:latest
     env_file:
       - .env
     environment:
