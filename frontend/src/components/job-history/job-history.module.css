@@ -1,0 +1,91 @@
+.jobHistoryContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  max-height: 98vh;
+  overflow-y: auto;
+  max-width: 600px;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1920px) {
+  .jobHistoryContainer {
+    width: 400px;
+    margin: 2rem;
+  }
+}
+
+.jobHistoryStep {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: black;
+}
+
+.actionItem {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 0.8rem; /* Increase gap between each entry */
+  font-size: 1rem; /* Adjust font size for readability */
+  padding: 0.5rem;
+  background-color: #f9f9f9; /* Light background for each action item */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.actionItem:hover {
+  background-color: #f0f0f0; /* Slight highlight on hover */
+}
+
+.actionItem strong {
+  font-weight: bold;
+  color: #333; /* Darker text for emphasis */
+}
+
+.actionItemKey {
+  font-weight: bold;
+  color: #555;
+  margin-right: 0.5rem; /* Space between key and value */
+}
+
+.actionItemValue {
+  color: #444;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.noAction {
+  color: #888;
+  font-style: italic;
+}
+
+.jobHistoryScreenshot {
+  max-width: 100%;
+  max-height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.jobHistoryScreenshotWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.jobHistoryScreenshotWrapper img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}

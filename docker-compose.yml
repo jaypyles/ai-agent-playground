@@ -1,0 +1,13 @@
+services:
+  ai_agent_playground:
+    build: .
+    env_file:
+      - .env
+    environment:
+      - APP_LEVEL=PROD
+    command: /bin/bash -c "/start.sh"
+    volumes:
+      - ./data:/app/data
+    ports:
+      - 8000:8000
+      - 3000:3000

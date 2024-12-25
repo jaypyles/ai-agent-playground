@@ -1,0 +1,20 @@
+[project]
+name = "ai-agent-playground"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [{ name = "Jayden Pyles", email = "jpylesbusiness@gmail.com" }]
+dependencies = [
+    "browser-use>=0.1.17",
+    "python-dotenv>=1.0.1",
+    "playwright>=1.49.1",
+    "fastapi>=0.115.6",
+    "uvicorn>=0.34.0",
+    "pytask-queue==1.0.3",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+
+[tool.pdm]
+distribution = true

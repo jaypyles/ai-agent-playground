@@ -1,0 +1,16 @@
+services:
+  ai_agent_playground:
+    environment:
+      - APP_LEVEL=DEV
+    command: /bin/bash -c "/start.sh"
+    volumes:
+      - ./frontend/public:/frontend/public
+      - ./frontend/src:/frontend/src
+      - ./frontend/tsconfig.json:/frontend/tsconfig.json
+      - ./frontend/tailwind.config.ts:/frontend/tailwind.config.ts
+      - ./frontend/next.config.ts:/frontend/next.config.ts
+      - ./frontend/postcss.config.mjs:/frontend/postcss.config.mjs
+      - ./frontend/package.json:/frontend/package.json
+      - ./frontend/package-lock.json:/frontend/package-lock.json
+
+      - ./src:/app/src
