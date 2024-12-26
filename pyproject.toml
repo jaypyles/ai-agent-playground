@@ -18,3 +18,13 @@ license = { text = "MIT" }
 
 [tool.pdm]
 distribution = true
+
+[tool.pyright]
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportAny = false
+reportUnknownVariableType = false
+reportUnknownMemberType = false
+reportExplicitAny = false
+reportCallInDefaultInitializer = false

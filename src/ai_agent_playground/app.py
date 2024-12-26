@@ -1,4 +1,3 @@
-from heapq import heappush
 import json
 from fastapi import FastAPI
 from .job_queue import COMMAND_QUEUE
@@ -27,8 +26,11 @@ def add_job(task: TaskRequest):
     job = Job()
     job.data = {
         "task": task.task,
+        "progressive_output": "",
         "output": {},
     }
+
+    print("Job ", job)
 
     COMMAND_QUEUE.insert(job)
     return {"job_id": job.task_id}
@@ -45,7 +47,7 @@ def delete_job():
 
     for job in jobs:
         LOG.info(f"Deleting job {job.task_id}")
-        COMMAND_QUEUE.delete(job.task_id)
+        _ = COMMAND_QUEUE.delete(job.task_id)
 
     return {"message": "Jobs deleted"}
 
@@ -59,3 +61,8 @@ def get_job(job_id: str):
 
     output = json.loads(job.data["output"])
     return {"job_id": job.task_id, "output": output}
+
+
+@app.get("/api/agent/status")
+def get_status():
+    return {"status": "ok"}

@@ -18,6 +18,10 @@ export default function Home() {
       return lastResult?.at(-1)?.extracted_content ?? "No output available";
     }
 
+    if (object.data.progressive_output) {
+      return object.data.progressive_output;
+    }
+
     return "No output available";
   };
 

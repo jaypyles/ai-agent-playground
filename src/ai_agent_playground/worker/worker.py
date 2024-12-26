@@ -10,7 +10,13 @@ async def worker_func(job: Job):
     task = job.data["task"]
     agent = HeadlessAgent(task)
     output = await agent.run()
-    job.data["output"] = output.model_dump()
+
+    print("The job data is ", job.data)
+
+    job.data = {
+        "output": output.model_dump(),
+        "progressive_output": job.data["progressive_output"],
+    }
 
 
 async def main():

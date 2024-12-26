@@ -7,6 +7,6 @@ up:
 	docker compose up -d
 
 up-dev:
-	docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+	docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate
 
 dev: build up-dev
