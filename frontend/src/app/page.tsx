@@ -143,6 +143,30 @@ export default function Home() {
               <div className="text-gray-600">
                 <strong>Output:</strong> {getJobOutput(job)}
               </div>
+
+              {job.data.has_csv && (
+                <button
+                  onClick={async () => {
+                    const response = await fetch(
+                      `http://localhost:8000/api/agent/csv/${job.task_id}`
+                    );
+                    const data = await response.json();
+                    const blob = new Blob([data.csv], { type: "text/csv" });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = `${job.task_id}.csv`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                  }}
+                  className="text-blue-500"
+                >
+                  Download CSV
+                </button>
+              )}
+
               <JobHistory
                 output={job.data.output}
                 jobId={job.task_id}

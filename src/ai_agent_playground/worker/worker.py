@@ -13,10 +13,13 @@ async def worker_func(job: Job):
 
     print("The job data is ", job.data)
 
-    job.data = {
-        "output": output.model_dump(),
-        "progressive_output": job.data["progressive_output"],
-    }
+    refreshed_job = COMMAND_QUEUE.get(job.task_id)
+
+    if refreshed_job:
+        job.data = {
+            **refreshed_job.data,
+            "output": output.model_dump(),
+        }
 
 
 async def main():

@@ -28,6 +28,7 @@ def add_job(task: TaskRequest):
         "task": task.task,
         "progressive_output": "",
         "output": {},
+        "has_csv": False,
     }
 
     print("Job ", job)
@@ -66,3 +67,8 @@ def get_job(job_id: str):
 @app.get("/api/agent/status")
 def get_status():
     return {"status": "ok"}
+
+
+@app.get("/api/agent/csv/{job_id}")
+def get_csv(job_id: str):
+    return {"csv": open(f"outputs/{job_id}.csv", "r").read()}
