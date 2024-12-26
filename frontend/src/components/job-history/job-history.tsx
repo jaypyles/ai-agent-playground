@@ -32,25 +32,27 @@ export const JobHistory = ({ output, open, jobId }: JobHistoryProps) => {
             {Array.isArray(step.model_output.action) &&
             step.model_output.action.length > 0 ? (
               step.model_output.action.map((actionItem, index) =>
-                Object.entries(actionItem).map(([key, value]) => (
-                  <div key={`${index}-${key}`} className={classes.actionItem}>
-                    <div key={`${index}-${key}-inner`}>
-                      <strong>Action - {cleanUnderscoreStrings(key)}:</strong>
-                      {Object.entries(value).map(
-                        ([innerKey, innerValue]: [string, any]) => (
-                          <div key={`${index}-${key}-${innerKey}`}>
-                            <span className={classes.actionItemKey}>
-                              {cleanUnderscoreStrings(innerKey)}:
-                            </span>
-                            <span className={classes.actionItemValue}>
-                              {innerValue}
-                            </span>
-                          </div>
-                        )
-                      )}
+                Object.entries(actionItem).map(([key, value]) =>
+                  key !== "update_database" ? (
+                    <div key={`${index}-${key}`} className={classes.actionItem}>
+                      <div key={`${index}-${key}-inner`}>
+                        <strong>Action - {cleanUnderscoreStrings(key)}:</strong>
+                        {Object.entries(value).map(
+                          ([innerKey, innerValue]: [string, any]) => (
+                            <div key={`${index}-${key}-${innerKey}`}>
+                              <span className={classes.actionItemKey}>
+                                {cleanUnderscoreStrings(innerKey)}:
+                              </span>
+                              <span className={classes.actionItemValue}>
+                                {innerValue}
+                              </span>
+                            </div>
+                          )
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ) : null
+                )
               )
             ) : (
               <span className={classes.noAction}>No action available</span>
